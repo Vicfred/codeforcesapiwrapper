@@ -6,5 +6,5 @@ from dataclasses import dataclass
 @dataclass
 class RecentAction:
     timeSeconds: int
-    blogEntry: BlogEntry
-    comment: Comment
+    blogEntry: BlogEntry = 0  # TODO what should i do here? :s
+    comment: Comment = 0

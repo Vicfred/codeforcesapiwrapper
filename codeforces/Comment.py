@@ -8,5 +8,5 @@ class Comment:
     commentatorHandle: str
     locale: str
     text: str
-    parentCommentId: int
     rating: int
+    parentCommentId: int = -1

@@ -13,11 +13,11 @@ class Party:
         MANAGER = auto()
         OUT_OF_COMPETITION = auto()
 
-    contestId: int
     members: List[Member]
     participantType: ParticipantType
-    teamId: int
-    teamName: str
     ghost: bool
-    room: int
-    startTimeSeconds: int
+    contestId: int = -1
+    teamId: int = -1
+    teamName: str = ""
+    room: int = -1
+    startTimeSeconds: int = -1

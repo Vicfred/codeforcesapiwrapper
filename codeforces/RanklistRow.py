@@ -13,4 +13,4 @@ class RanklistRow:
     successfulHackCount: int
     unsuccessfulHackCount: int
     problemResults: List[ProblemResult]
-    lastSubmissionTimeSeconds: int
+    lastSubmissionTimeSeconds: int = -1

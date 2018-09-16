@@ -22,14 +22,14 @@ class Contest:
     phase: Phase
     frozen: bool
     durationSeconds: int
-    startTimeSeconds: int
-    relativeTimeSeconds: int
-    preparedBy: str
-    websiteUrl: str
-    description: str
-    difficulty: int
-    kind: str
-    icpcRegion: str
-    country: str
-    city: str
-    season: str
+    startTimeSeconds: int = -1
+    relativeTimeSeconds: int = -1
+    preparedBy: str = ""
+    websiteUrl: str = ""
+    description: str = ""
+    difficulty: int = -1
+    kind: str = ""
+    icpcRegion: str = ""
+    country: str = ""
+    city: str = ""
+    season: str = ""

@@ -9,10 +9,10 @@ class Problem:
         PROGRAMMING = auto()
         QUESTION = auto()
 
-    contestId: int
-    problemsetName: str
     index: str
     name: str
     type: Type
-    points: float
     tags: List[str]
+    contestId: int = -1
+    problemsetName: str = ""
+    points: float = -1.0

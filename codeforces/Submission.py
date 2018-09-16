@@ -32,7 +32,6 @@ class Submission:
         TESTSN = auto()
 
     id: int
-    contestId: int
     creationTimeSeconds: int
     relativeTimeSeconds: int
     problem: Problem
@@ -43,3 +42,4 @@ class Submission:
     passedTestCount: int
     timeConsumedMillis: int
     memoryConsumedBytes: int
+    contestId: int = -1
