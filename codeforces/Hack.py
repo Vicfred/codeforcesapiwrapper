@@ -1,6 +1,8 @@
 from .Party import Party
 from .Problem import Problem
 from enum import Enum, auto
+from dataclasses import dataclass
+
 
 @dataclass
 class Hack:

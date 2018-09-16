@@ -1,5 +1,7 @@
 from .Party import Party
 from .ProblemResult import ProblemResult
+from dataclasses import dataclass
+
 
 @dataclass
 class RanklistRow:
