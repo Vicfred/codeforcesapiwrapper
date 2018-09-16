@@ -13,3 +13,6 @@ class ProblemResult:
     rejectedAttemptCount: int
     type: Type
     bestSubmissionTimeSeconds: int
+
+    def __post_init__(self):
+        self.type = self.Type[self.type]

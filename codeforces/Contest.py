@@ -33,3 +33,7 @@ class Contest:
     country: str = ""
     city: str = ""
     season: str = ""
+
+    def __post_init__(self):
+        self.type = self.Type[self.type]
+        self.phase = self.Phase[self.phase]

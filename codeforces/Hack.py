@@ -24,3 +24,9 @@ class Hack:
     problem: Problem
     test: str
     judgeProtocol: str  # TODO update to match specification
+
+    def __post_init__(self):
+        self.verdict = self.Verdict[self.verdict]
+        self.hacker = Party(**self.hacker)
+        self.defender = Party(**self.defender)
+        self.problem = Problem(**self.problem)

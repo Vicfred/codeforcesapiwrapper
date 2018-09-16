@@ -14,3 +14,11 @@ class RanklistRow:
     unsuccessfulHackCount: int
     problemResults: List[ProblemResult]
     lastSubmissionTimeSeconds: int = -1
+
+    def __post_init__(self):
+        self.party = Party(**self.party)
+
+        problemResults = []
+        for problemResult in self.problemResults:
+            problemResults.append(ProblemResult(**problemResult))
+        self.problemResults = problemResults

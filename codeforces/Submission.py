@@ -3,6 +3,7 @@ from .Party import Party
 from enum import Enum, auto
 from dataclasses import dataclass
 
+
 @dataclass
 class Submission:
     class Verdict(Enum):
@@ -43,3 +44,9 @@ class Submission:
     timeConsumedMillis: int
     memoryConsumedBytes: int
     contestId: int = -1
+
+    def __post_init__(self):
+        self.problem = Problem(**self.problem)
+        self.author = Problem(**self.author)
+        self.verdict = self.Verdict[self.verdict]
+        self.testset = self.Testset[self.testset]

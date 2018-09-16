@@ -21,3 +21,11 @@ class Party:
     teamName: str = ""
     room: int = -1
     startTimeSeconds: int = -1
+
+    def __post_init__(self):
+        self.participantType = self.ParticipantType[self.participantType]
+
+        members = []
+        for member in self.members:
+            members.append(Member(**member))
+        self.members = members
