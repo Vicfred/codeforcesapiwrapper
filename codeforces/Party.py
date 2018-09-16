@@ -1,6 +1,7 @@
 from .Member import Member
 from enum import Enum, auto
 from dataclasses import dataclass
+from typing import List
 
 
 @dataclass
@@ -13,7 +14,7 @@ class Party:
         OUT_OF_COMPETITION = auto()
 
     contestId: int
-    members: [Member]
+    members: List[Member]
     participantType: ParticipantType
     teamId: int
     teamName: str

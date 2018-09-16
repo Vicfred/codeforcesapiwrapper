@@ -5,7 +5,7 @@ from dataclasses import dataclass
 
 @dataclass
 class Submission:
-    class Veredict(Enum):
+    class Verdict(Enum):
         FAILED = auto()
         OK = auto()
         PARTIAL = auto()
@@ -38,7 +38,7 @@ class Submission:
     problem: Problem
     author: Party
     programmingLanguage: str
-    veredict: Veredict
+    verdict: Verdict
     testset: Testset
     passedTestCount: int
     timeConsumedMillis: int

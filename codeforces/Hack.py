@@ -6,7 +6,7 @@ from dataclasses import dataclass
 
 @dataclass
 class Hack:
-    class Veredict(Enum):
+    class Verdict(Enum):
         HACK_SUCCESSFUL = auto()
         HACK_UNSUCCESSFUL = auto()
         INVALID_INPUT = auto()
@@ -20,7 +20,7 @@ class Hack:
     creationTimeSeconds: int
     hacker: Party
     defender: Party
-    veredict: Veredict
+    verdict: Verdict
     problem: Problem
     test: str
     judgeProtocol: str  # TODO update to match specification

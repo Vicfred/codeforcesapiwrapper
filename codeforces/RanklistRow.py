@@ -1,6 +1,7 @@
 from .Party import Party
 from .ProblemResult import ProblemResult
 from dataclasses import dataclass
+from typing import List
 
 
 @dataclass
@@ -11,5 +12,5 @@ class RanklistRow:
     penalty: int
     successfulHackCount: int
     unsuccessfulHackCount: int
-    problemResults: [ProblemResult]
+    problemResults: List[ProblemResult]
     lastSubmissionTimeSeconds: int

@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import List
 
 
 @dataclass
@@ -12,5 +13,5 @@ class BlogEntry:
     locale: str
     modificationTimeSeconds: int
     allowViewHistory: bool
-    tags: [str]
+    tags: List[str]
     rating: int

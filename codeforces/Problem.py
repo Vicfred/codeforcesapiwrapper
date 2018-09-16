@@ -1,5 +1,6 @@
 from enum import Enum, auto
 from dataclasses import dataclass
+from typing import List
 
 
 @dataclass
@@ -14,4 +15,4 @@ class Problem:
     name: str
     type: Type
     points: float
-    tags: [str]
+    tags: List[str]
