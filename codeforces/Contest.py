@@ -27,7 +27,7 @@ class Contest:
     preparedBy: str = ""
     websiteUrl: str = ""
     description: str = ""
-    difficulty: int = -1
+    difficulty: int = 1
     kind: str = ""
     icpcRegion: str = ""
     country: str = ""
