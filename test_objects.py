@@ -52,9 +52,3 @@ def test_submission():
     assert len(result) >= 1
     for submission in result:
         print(Submission(**submission))
-
-
-test_user()
-test_contest()
-test_problem()
-test_submission()

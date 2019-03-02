@@ -1,9 +1,37 @@
 from typing import List, Optional
-from .User import User
-
 import requests
 
+from codeforces.BlogEntry import BlogEntry
+from codeforces.Comment import Comment
+from codeforces.User import User
+
 base_url = "http://codeforces.com/api/"
+
+
+def blogEntry_comments(blogEntryId: int) -> Optional[List[Comment]]:
+    method_route = "blogEntry.comments"
+    r = requests.get(base_url + method_route, params={"blogEntryId": blogEntryId})
+    if r.status_code != 200:
+        return None
+    json = r.json()
+    if json["status"] != "OK":
+        return None
+    result = json["result"]
+    comments = list()
+    for comment in result:
+        comments.append(Comment(**comment))
+    return comments
+
+def blogEntry_view(blogEntryId: int) -> BlogEntry:
+    method_route = "blogEntry.view"
+    r = requests.get(base_url + method_route, params={"blogEntryId": blogEntryId})
+    if r.status_code != 200:
+        return None
+    json = r.json()
+    if json["status"] != "OK":
+        return None
+    result = json["result"]
+    return BlogEntry(**result)
 
 
 def user_info(handles: List[str]) -> Optional[List[User]]:
