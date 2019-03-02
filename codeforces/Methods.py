@@ -10,6 +10,7 @@ from codeforces.Problem import Problem
 from codeforces.ProblemStatistics import ProblemStatistics
 from codeforces.RanklistRow import RanklistRow
 from codeforces.RatingChange import RatingChange
+from codeforces.RecentAction import RecentAction
 from codeforces.Submission import Submission
 from codeforces.User import User
 
@@ -181,6 +182,20 @@ def problemset_recentStatus(count: int, *problemSetName) -> List[Submission]:
     for submission in result:
         submissions.append(Submission(**submission))
     return submissions
+
+
+# noinspection PyPep8Naming
+def recentActions(maxCount: int) -> List[RecentAction]:
+    method_route = "recentActions"
+    r = requests.get(base_url + method_route, params={"maxCount": maxCount})
+    json_response = r.json()
+    if json_response["status"] != "OK":
+        return None
+    result = json_response["result"]
+    recent_actions = list()
+    for action in result:
+        recent_actions.append(RecentAction(**action))
+    return recent_actions
 
 
 def user_info(handles: List[str]) -> Optional[List[User]]:

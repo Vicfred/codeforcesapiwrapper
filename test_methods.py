@@ -83,6 +83,13 @@ def test_contest_status():
         print(submission)
 
 
+# noinspection PyPep8Naming
+def test_recentActions():
+    actions = recentActions(10)
+    for action in actions:
+        print(action)
+
+
 def test_user_info():
     users = user_info(["Vicfred", "Fefer_Ivan", "tourist", "rng_58"])
     for user in users:
