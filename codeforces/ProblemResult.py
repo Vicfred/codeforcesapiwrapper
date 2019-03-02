@@ -9,10 +9,10 @@ class ProblemResult:
         FINAL = auto()
 
     points: float
-    penalty: int
     rejectedAttemptCount: int
     type: Type
-    bestSubmissionTimeSeconds: int
+    bestSubmissionTimeSeconds: int = -1  # This can be absent but it's not documented -__-
+    penalty: int = -1  # This can be absent but it's not documented -__-
 
     def __post_init__(self):
         self.type = self.Type[self.type]

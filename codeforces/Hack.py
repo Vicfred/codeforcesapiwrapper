@@ -22,7 +22,7 @@ class Hack:
     defender: Party
     verdict: Verdict
     problem: Problem
-    judgeProtocol: str  # TODO update to match specification
+    judgeProtocol: str  # TODO update to match specification using an object instead of a (json) string
     test: str = ""
 
     def __post_init__(self):
