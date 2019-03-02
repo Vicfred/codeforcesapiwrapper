@@ -14,8 +14,8 @@ def test_user():
     result = json["result"]
     assert len(result) >= 1
     vicfred = User(**result[0])
-    print(vicfred)
     assert vicfred.handle == "Vicfred"
+    print(vicfred)
 
 
 def test_contest():
