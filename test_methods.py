@@ -90,7 +90,41 @@ def test_recentActions():
         print(action)
 
 
+def test_user_blogEntries():
+    entries = user_blogEntries("tourist")
+    for entry in entries:
+        print(entry)
+
+
+def test_user_friends():
+    users = user_friends()
+    for user in users:
+        print(user)
+
+
 def test_user_info():
     users = user_info(["Vicfred", "Fefer_Ivan", "tourist", "rng_58"])
     for user in users:
         print(user)
+
+
+# noinspection PyPep8Naming
+def test_user_ratedList():
+    users = user_ratedList()
+    for user in users:
+        print(user)
+
+
+def test_user_rating():
+    changes = user_rating("Vicfred")
+    for change in changes:
+        print(change)
+
+
+def test_user_status():
+    params = dict()
+    params["from"] = 1
+    params["count"] = 10
+    submissions = user_status("Vicfred", **params)
+    for submission in submissions:
+        print(submission)

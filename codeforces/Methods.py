@@ -1,6 +1,5 @@
 from typing import List, Optional
 import requests
-import json
 
 from codeforces.BlogEntry import BlogEntry
 from codeforces.Comment import Comment
@@ -171,9 +170,11 @@ def problemset_problems(**kwargs):
 
 
 # noinspection PyPep8Naming
-def problemset_recentStatus(count: int, *problemSetName) -> List[Submission]:
+def problemset_recentStatus(count: int, *problem_set_name) -> List[Submission]:
     method_route = "problemset.recentStatus"
-    r = requests.get(base_url + method_route, params={"count": count, "problemsetName": problemSetName})
+    r = requests.get(base_url + method_route, params={"count": count, "problemsetName": problem_set_name})
+    if r.status_code != 200:
+        return None
     json_response = r.json()
     if json_response["status"] != "OK":
         return None
@@ -185,9 +186,11 @@ def problemset_recentStatus(count: int, *problemSetName) -> List[Submission]:
 
 
 # noinspection PyPep8Naming
-def recentActions(maxCount: int) -> List[RecentAction]:
+def recentActions(max_count: int) -> List[RecentAction]:
     method_route = "recentActions"
-    r = requests.get(base_url + method_route, params={"maxCount": maxCount})
+    r = requests.get(base_url + method_route, params={"maxCount": max_count})
+    if r.status_code != 200:
+        return None
     json_response = r.json()
     if json_response["status"] != "OK":
         return None
@@ -196,6 +199,37 @@ def recentActions(maxCount: int) -> List[RecentAction]:
     for action in result:
         recent_actions.append(RecentAction(**action))
     return recent_actions
+
+
+def user_blogEntries(handle: str) -> List[BlogEntry]:
+    method_route = "user.blogEntries"
+    r = requests.get(base_url + method_route, params={"handle": handle})
+    if r.status_code != 200:
+        return None
+    json_response = r.json()
+    if json_response["status"] != "OK":
+        return None
+    result = json_response["result"]
+    entries = list()
+    for blog in result:
+        entries.append(BlogEntry(**blog))
+    return entries
+
+
+def user_friends(*only_online) -> List[User]:
+    # TODO user must be authenticated to call this method
+    method_route = "user.friends"
+    r = requests.get(base_url + method_route, params={"onlyOnline": only_online})
+    if r.status_code != 200:
+        return None
+    json_response = r.json()
+    if json_response["status"] != "OK":
+        return None
+    result = json_response["result"]
+    users = list()
+    for user in result:
+        users.append(User(**user))
+    return users
 
 
 def user_info(handles: List[str]) -> Optional[List[User]]:
@@ -219,3 +253,50 @@ def user_info(handles: List[str]) -> Optional[List[User]]:
     for user in result:
         users.append(User(**user))
     return users
+
+
+def user_ratedList(*active_only) -> List[User]:
+    method_route = "user.ratedList"
+    r = requests.get(base_url + method_route, params={"activeOnly": active_only})
+    if r.status_code != 200:
+        return None
+    json_response = r.json()
+    if json_response["status"] != "OK":
+        return None
+    result = json_response["result"]
+    users = list()
+    for user in result:
+        users.append(User(**user))
+    return users
+
+
+def user_rating(handle: str) -> List[RatingChange]:
+    method_route = "user.rating"
+    r = requests.get(base_url + method_route, params={"handle": handle})
+    if r.status_code != 200:
+        return None
+    json_response = r.json()
+    if json_response["status"] != "OK":
+        return None
+    result = json_response["result"]
+    rating_changes = list()
+    for rating in result:
+        rating_changes.append(RatingChange(**rating))
+    return rating_changes
+
+
+def user_status(handle: str, **kwargs) -> List[Submission]:
+    method_route = "user.status"
+    params = kwargs
+    params["handle"] = handle
+    r = requests.get(base_url + method_route, kwargs)
+    if r.status_code != 200:
+        return None
+    json_response = r.json()
+    if json_response["status"] != "OK":
+        return None
+    result = json_response["result"]
+    submissions = list()
+    for submission in result:
+        submissions.append(Submission(**submission))
+    return submissions
