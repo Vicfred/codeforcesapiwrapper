@@ -6,7 +6,7 @@ import requests
 base_url = "http://codeforces.com/api/"
 
 
-def user_info(handles: Optional[List[str]]) -> Optional[List[User]]:
+def user_info(handles: List[str]) -> Optional[List[User]]:
     if len(handles) > 1000:
         return None
     method_route = "user.info"
