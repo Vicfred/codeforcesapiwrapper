@@ -22,8 +22,8 @@ class Hack:
     defender: Party
     verdict: Verdict
     problem: Problem
-    test: str
     judgeProtocol: str  # TODO update to match specification
+    test: str = ""
 
     def __post_init__(self):
         self.verdict = self.Verdict[self.verdict]
