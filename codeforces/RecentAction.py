@@ -6,5 +6,5 @@ from dataclasses import dataclass
 @dataclass
 class RecentAction:
     timeSeconds: int
-    blogEntry: BlogEntry = BlogEntry()  # TODO what should i do here? :s
+    blogEntry: BlogEntry = BlogEntry()  # TODO what should i do here? :s, still needs testing
     comment: Comment = Comment()
