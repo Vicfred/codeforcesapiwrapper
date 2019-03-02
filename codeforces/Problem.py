@@ -14,5 +14,9 @@ class Problem:
     type: Type
     tags: List[str]
     contestId: int = -1
-    problemsetName: str = ""
+    problemSetName: str = ""
     points: float = -1.0
+    rating: int = -1
+
+    def __post_init__(self):
+        self.type = self.Type[self.type]

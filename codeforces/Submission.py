@@ -25,7 +25,7 @@ class Submission:
         TESTING = auto()
         REJECTED = auto()
 
-    class Testset(Enum):
+    class TestSet(Enum):
         SAMPLES = auto()
         PRETESTS = auto()
         TESTS = auto()
@@ -39,7 +39,7 @@ class Submission:
     author: Party
     programmingLanguage: str
     verdict: Verdict
-    testset: Testset
+    testset: TestSet
     passedTestCount: int
     timeConsumedMillis: int
     memoryConsumedBytes: int
@@ -47,6 +47,6 @@ class Submission:
 
     def __post_init__(self):
         self.problem = Problem(**self.problem)
-        self.author = Problem(**self.author)
+        self.author = Party(**self.author)
         self.verdict = self.Verdict[self.verdict]
-        self.testset = self.Testset[self.testset]
+        self.testset = self.TestSet[self.testset]
