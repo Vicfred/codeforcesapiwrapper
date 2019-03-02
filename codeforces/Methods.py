@@ -7,6 +7,7 @@ from codeforces.Comment import Comment
 from codeforces.Contest import Contest
 from codeforces.Hack import Hack
 from codeforces.Problem import Problem
+from codeforces.ProblemStatistics import ProblemStatistics
 from codeforces.RanklistRow import RanklistRow
 from codeforces.RatingChange import RatingChange
 from codeforces.Submission import Submission
@@ -134,6 +135,44 @@ def contest_status(contest_id: int, **kwargs) -> List[Submission]:
     r = requests.get(base_url + method_route, params=params)
     if r.status_code != 200:
         return None
+    json_response = r.json()
+    if json_response["status"] != "OK":
+        return None
+    result = json_response["result"]
+    submissions = list()
+    for submission in result:
+        submissions.append(Submission(**submission))
+    return submissions
+
+
+def problemset_problems(**kwargs):
+    """
+    returns a dictionary with 2 keys
+    problems -> list of Problem objects
+    problemStatistics -> list of ProblemStatistics objects
+    """
+    method_route = "problemset.problems"
+    r = requests.get(base_url + method_route, kwargs)
+    if r.status_code != 200:
+        return None
+    json_response = r.json()
+    if json_response["status"] != "OK":
+        return None
+    result = json_response["result"]
+    response = dict()
+    response["problems"] = list()
+    for problem in result["problems"]:
+        response["problems"].append(Problem(**problem))
+    response["problemStatistics"] = list()
+    for statistic in result["problemStatistics"]:
+        response["problemStatistics"].append(ProblemStatistics(**statistic))
+    return response
+
+
+# noinspection PyPep8Naming
+def problemset_recentStatus(count: int, *problemSetName) -> List[Submission]:
+    method_route = "problemset.recentStatus"
+    r = requests.get(base_url + method_route, params={"count": count, "problemsetName": problemSetName})
     json_response = r.json()
     if json_response["status"] != "OK":
         return None

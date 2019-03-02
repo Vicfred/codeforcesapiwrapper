@@ -54,6 +54,29 @@ def test_contest_standings():
         print(row)
 
 
+def test_problemset_problems():
+    params = dict()
+    params["tags"] = "dp"
+    resp = problemset_problems(**params)
+    print("=========")
+    print("problems:")
+    print("=========")
+    for problem in resp["problems"]:
+        print(problem)
+    print("=========")
+    print("problem statistics:")
+    print("=========")
+    for statistic in resp["problemStatistics"]:
+        print(statistic)
+
+
+# noinspection PyPep8Naming
+def test_problemset_recentStatus():
+    submissions = problemset_recentStatus(10)
+    for submission in submissions:
+        print(submission)
+
+
 def test_contest_status():
     submissions = contest_status(566)
     for submission in submissions:
