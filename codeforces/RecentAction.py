@@ -1,4 +1,4 @@
-from typing import Optional
+# -*- coding: utf-8 -*-
 
 from .BlogEntry import BlogEntry
 from .Comment import Comment

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from .Member import Member
 from enum import Enum, auto
 from dataclasses import dataclass

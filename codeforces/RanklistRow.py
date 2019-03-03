@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from .Party import Party
 from .ProblemResult import ProblemResult
 from dataclasses import dataclass

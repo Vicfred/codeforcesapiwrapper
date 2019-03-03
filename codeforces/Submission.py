@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from .Problem import Problem
 from .Party import Party
 from enum import Enum, auto
