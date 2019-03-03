@@ -1,0 +1,1 @@
+Just a simple wrapper for the codeforces API. Used dataclases for the objects. Tried to be as close as possible with the codeforces name convention.

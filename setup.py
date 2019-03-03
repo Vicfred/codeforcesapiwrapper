@@ -11,17 +11,20 @@ with open(os.path.join(_here, 'LICENSE'), encoding='utf-8') as f:
     LICENSE = f.read()
 
 version = {}
-with open(os.path.join(_here, 'somepackage', 'version.py')) as f:
+with open(os.path.join(_here, 'codeforces', 'version.py')) as f:
     exec(f.read(), version)
 
 setup(
     name='codeforces',
-    version='0.1.0',
+    version=version['__version__'],
     description='Simple wrapper for the codeforces API',
     long_description=README,
     author='Vicfred',
     author_email='me@vicfred.dev',
     url='vicfred.dev',
     license=LICENSE,
-    packages=find_packages(exclude=('tests', 'docs'))
+    packages=find_packages(exclude=('tests', 'docs')),
+    install_requires=[
+        'requests==2.19.1'
+       ]
 )

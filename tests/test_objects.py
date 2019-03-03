@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import requests
 from codeforces.User import User
 from codeforces.Contest import Contest
