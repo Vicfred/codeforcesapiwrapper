@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from enum import Enum, auto
-from dataclasses import dataclass
+from dataclasses import dataclass, astuple
 
 
 @dataclass
@@ -38,3 +38,6 @@ class Contest:
     def __post_init__(self):
         self.type = self.Type[self.type]
         self.phase = self.Phase[self.phase]
+
+    def __composite_values__(self):
+        return astuple(self)

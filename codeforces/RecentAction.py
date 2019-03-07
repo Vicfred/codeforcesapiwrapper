@@ -2,7 +2,7 @@
 
 from .BlogEntry import BlogEntry
 from .Comment import Comment
-from dataclasses import dataclass
+from dataclasses import dataclass, astuple
 
 
 @dataclass
@@ -16,3 +16,6 @@ class RecentAction:
             self.blogEntry = BlogEntry(**self.blogEntry)
         if self.comment is not None:
             self.comment = Comment(**self.comment)
+
+    def __composite_values__(self):
+        return astuple(self)

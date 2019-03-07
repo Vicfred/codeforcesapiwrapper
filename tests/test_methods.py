@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from codeforces.Methods import *
+from dataclasses import *
 
 
 # noinspection PyPep8Naming
@@ -55,6 +56,12 @@ def test_contest_standings():
         print(row)
 
 
+def test_contest_status():
+    submissions = contest_status(566)
+    for submission in submissions:
+        print(submission)
+
+
 def test_problemset_problems():
     params = dict()
     params["tags"] = "dp"
@@ -74,12 +81,6 @@ def test_problemset_problems():
 # noinspection PyPep8Naming
 def test_problemset_recentStatus():
     submissions = problemset_recentStatus(10)
-    for submission in submissions:
-        print(submission)
-
-
-def test_contest_status():
-    submissions = contest_status(566)
     for submission in submissions:
         print(submission)
 
@@ -129,3 +130,4 @@ def test_user_status():
     submissions = user_status("Vicfred", **params)
     for submission in submissions:
         print(submission)
+

@@ -2,7 +2,7 @@
 from .Problem import Problem
 from .Party import Party
 from enum import Enum, auto
-from dataclasses import dataclass
+from dataclasses import dataclass, astuple
 
 
 @dataclass
@@ -51,3 +51,6 @@ class Submission:
         self.author = Party(**self.author)
         self.verdict = self.Verdict[self.verdict]
         self.testset = self.TestSet[self.testset]
+
+    def __composite_values__(self):
+        return astuple(self)

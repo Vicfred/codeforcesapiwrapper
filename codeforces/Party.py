@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from .Member import Member
 from enum import Enum, auto
-from dataclasses import dataclass
+from dataclasses import dataclass, astuple
 from typing import List
 
 
@@ -30,3 +30,6 @@ class Party:
         for member in self.members:
             members.append(Member(**member))
         self.members = members
+
+    def __composite_values__(self):
+        return astuple(self)

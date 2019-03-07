@@ -2,7 +2,7 @@
 from .Party import Party
 from .Problem import Problem
 from enum import Enum, auto
-from dataclasses import dataclass
+from dataclasses import dataclass, astuple
 
 
 @dataclass
@@ -31,3 +31,6 @@ class Hack:
         self.hacker = Party(**self.hacker)
         self.defender = Party(**self.defender)
         self.problem = Problem(**self.problem)
+
+    def __composite_values__(self):
+        return astuple(self)

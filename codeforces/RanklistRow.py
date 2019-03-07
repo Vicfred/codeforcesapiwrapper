@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from .Party import Party
 from .ProblemResult import ProblemResult
-from dataclasses import dataclass
+from dataclasses import dataclass, astuple
 from typing import List
 
 
@@ -23,3 +23,6 @@ class RanklistRow:
         for problemResult in self.problemResults:
             problemResults.append(ProblemResult(**problemResult))
         self.problemResults = problemResults
+
+    def __composite_values__(self):
+        return astuple(self)
