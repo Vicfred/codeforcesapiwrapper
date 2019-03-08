@@ -39,18 +39,19 @@ class Submission:
     problem: Problem
     author: Party
     programmingLanguage: str
-    verdict: Verdict
     testset: TestSet
     passedTestCount: int
     timeConsumedMillis: int
     memoryConsumedBytes: int
     contestId: int = -1
+    verdict: Verdict = None
 
     def __post_init__(self):
         self.problem = Problem(**self.problem)
         self.author = Party(**self.author)
-        self.verdict = self.Verdict[self.verdict]
         self.testset = self.TestSet[self.testset]
+        if self.verdict is not None:
+            self.verdict = self.Verdict[self.verdict]
 
     def __composite_values__(self):
         return astuple(self)
