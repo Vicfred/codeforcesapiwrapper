@@ -31,7 +31,15 @@ class Submission:
         PRETESTS = auto()
         TESTS = auto()
         CHALLENGES = auto()
-        TESTSN = auto()
+        TESTS1 = auto()
+        TESTS2 = auto()
+        TESTS3 = auto()
+        TESTS4 = auto()
+        TESTS5 = auto()
+        TESTS6 = auto()
+        TESTS7 = auto()
+        TESTS8 = auto()
+        TESTS9 = auto()
 
     id: int
     creationTimeSeconds: int
